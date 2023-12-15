@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鐵建日報</title>
+    <link rel="stylesheet" href="destyle.css">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="script.js"></script>
+</head>
+
+<body>
+    <div style="display: flex;flex-direction: column;align-items: center;">
+        <header class="header">
+            <div class="title_bg">
+                <img class="favicon" src="images/favicon.png">
+                <a class="title_name">日報</a>
+            </div>
+            <div class="logout_btn_bg">
+                <a class="logout_text">ログアウト</a>
+                <img class="logout_icon" src="images/logout_icon.png">
+            </div>
+        </header>
+        <div class="carender_bg_1">
+            <div class="carender_bg_2">
+                <div class="carender_info_bg">
+                    <div class="carender_info_wiget"
+                        style="border-width: 2px 0px;border-style: solid;border-color: #fff;">
+                        <div id="date" class="carender_day_wiget"></div>
+                    </div>
+                    <div id="mounth" class="carender_mounth_wiget"></div>
+                    <div class="carender_info_wiget">
+                        <div style="width:26px; height:26px;">
+                            <div class="employee_user_icon">
+                                <span class="employee_user_icon_head"></span>
+                                <span class="employee_user_icon_body"></span>
+                            </div>
+                        </div>
+                        <a class="user_name">Tekken</a>
+                    </div>
+                </div>
+                <div class="carender_weekview">
+                    <div class="carender_week_bg">
+                        <input type="radio" name="radioselect1" checked value="select_1" id="radio1">
+                        <label class="carender_radiobtn" for="radio1">
+                            <a id="elem" class="carender_week_elem"></a>
+                            <a id="week" class="carender_week"></a>
+                        </label>
+                    </div>
+                </div>
+                <div class="carender_bg_3">
+                    <div class="carender_title_bg">
+                        <div class="carender_blank"></div>
+                        <div class="carender_title_time"></div>
+                        <div class="carender_title_workcord"></div>
+                        <div class="carender_title_consnum"></div>
+                        <div class="carender_title_work_content"></div>
+                    </div>
+                    <div class="carender_content_bg">
+                        <div class="carender_weekday_bg"></div>
+                    </div>
+                    <div class="total_work_line"></div>
+                </div>
+            </div>
+        </div>
+        <div class="edit_btn_bg_1">
+            <div class="edit_btn_bg_2"></div>
+        </div>
+        <div class="send_btn_bg_1">
+            <div class="send_btn_bg_2"></div>
+        </div>
+    </div>
+</body>
+
+</html>
