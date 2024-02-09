@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ジョン博士の日記</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+
+<body>
+    <div class="contentModalBackground">
+        <div class="contentModal">
+            <P class="contentModalHeaderText">
+                ジョン博士の日記
+            </P>
+            <p class="contentModalText">
+                これは、ジョン博士が死亡する直前に書かれた日記……？<br>
+                でも、大分きな臭い匂いがしてきた。
+            </p>
+            <button class="contentModalButton" onclick="modalOut()">次へ</button>
+        </div>
+    </div>
+    <div class="contentBackground">
+        <div class="bodyDiv">
+            <header class="contentHeader">
+                <p class="contentHeaderText">
+                    日記 2030/02/10 8:30:59
+                </p>
+            </header>
+            <div class="letter">
+                <p class="letterText">計画は順調だ。</p>
+                <p class="letterText">ミリアの人型ロボットも、もうすぐで量産体制に入る事が出来る。ここまで極秘に行うのは骨が折れたが……。</p>
+                <p class="letterText">もうすぐ計画を実行するとなると、恐怖で手が震えてくる。幾ら人間が醜いと言えど……いや。</p>
+                <p class="letterText">人間の方が悪いではないか。人間を護持する為に作ったミリアが、犯罪から軍事利用までされるだと？？
+                    許されていいものではない。よもや作った私までもが批判されるのは、甚だおかしいではないか。
+                </p>
+                <p class="letterText">計画は完遂させる。<span class="letterTextEmphasis">AIによって人間を管理すれば、争いが生まれる事はない。</span>かつて人間が機械を使った様に。</p>
+                <p class="letterText">まだ誰にも知られていないはずだ。来週には、動き出そう。</p>
+            </div>
+
+            <button class="eventReadEnd" onclick="readEnd()">
+                <p class="eventReadEndText">日記を読み終える</p>
+            </button>
+        </div>
+</body>
+<script>
+    function modalOut() {
+        document.getElementsByClassName("contentModalBackground")[0].style.display = "none";
+    }
+
+    function readEnd(){
+        // 別のHTMLページに遷移する
+        window.location.href = "index.html";
+    }
+</script>
+
+</html>
