@@ -1,0 +1,187 @@
+:root {
+    --mainColor: #fff;
+    --subColor: #6f7477;
+    --borderColor: #05BFDB;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.contentBackground {
+    background-color: var(--subColor);
+    /* 背景色を変更 */
+    width: 100vw;
+    /* 横幅を画面いっぱいに表示 */
+    height: 100vh;
+    /* 縦幅を画面いっぱいに表示 */
+}
+
+.bodyDiv {
+    overflow: scroll;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    /* absoluteからのtransformで、上下左右中央揃えに */
+    width: 100%;
+    height: auto;
+    max-height: 80%;
+    /* 縦幅を可変出来る様に */
+    display: flex;
+    /* 要素を重ねて表示できるよう */
+    flex-direction: column;
+    /* 要素を上から順番に並べる様に */
+    background: var(--mainColor);
+}
+
+.contentHeader {
+    border: none;
+    width: 100%;
+    background-color: var(--subColor);
+    display: flex;
+    padding: 15px 0;
+    /* 要素の内側に上下15pxの余白を設ける */
+}
+
+.contentHeaderText {
+    color: #fff;
+    margin: auto;
+    font-size: 1.5em;
+    /* フォントのサイズをemを使い、画面サイズごとに適切なサイズに */
+    font-family: serif;
+    /* フォントのスタイルをserifに */
+    font-weight: bold;
+    /* フォントの太さをboldに */
+    letter-spacing: .1em;
+    /* 文字と文字のスペースを設定 */
+    padding: 0 0.8em;
+}
+
+.letter {
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    margin: 2em auto 2em;
+    padding: 24px;
+    position: relative;
+    width: 75%;
+}
+
+.letter:before,
+.letter:after {
+    content: "";
+    height: 98%;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+}
+
+.letter:before {
+    background: #fafafa;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    left: -5px;
+    top: 4px;
+    transform: rotate(-2.5deg);
+}
+
+.letter:after {
+    background: #f6f6f6;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    right: -3px;
+    top: 1px;
+    transform: rotate(1.4deg);
+}
+
+h2.ppt {
+    position: relative;
+    padding: 2px 48px;
+    border-bottom: 1px solid var(--borderColor);
+    font-weight: lighter;
+}
+
+h2.ppt:first-letter {
+    color: var(--borderColor);
+}
+
+h2.ppt:before,
+h2.ppt:after {
+    content: "";
+    display: block;
+    position: absolute;
+}
+
+h2.ppt:before {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid #000;
+    bottom: -16px;
+    left: 8px;
+}
+
+h2.ppt:after {
+    height: 64px;
+    border-left: 1px solid #000;
+    bottom: -32px;
+    left: 24px;
+}
+
+.letterText {
+    color: #000;
+    font-family: serif;
+    /* フォントのスタイルをserifに */
+    font-weight: bold;
+    /* フォントの太さをboldに */
+    letter-spacing: .1em;
+    /* 文字と文字のスペースを設定 */
+    padding: 0 0.8em;
+    font-size: 0.95em;
+}
+
+.letterTextEmphasis {
+    color: #ff0000;
+    text-decoration: underline;
+    font-family: serif;
+    /* フォントのスタイルをserifに */
+    font-weight: bold;
+    /* フォントの太さをboldに */
+    letter-spacing: .1em;
+    /* 文字と文字のスペースを設定 */
+}
+
+.buttonElements {
+    display: flex;
+    flex-direction: row;
+    width: calc(100% - 30px);
+    height: auto;
+    margin: 0 20px;
+}
+
+.eventReadEnd {
+    width: calc(100% - 30px);
+    margin: 0 10px 20px 10px;
+    background: #FFFFFF;
+    border: 4px solid #05BFDB;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+    display: flex;
+    text-decoration: none;
+
+}
+
+.eventReadEndText {
+    font-family: Serif;
+    word-break: break-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    /* 三行目までは表示され、それ以降は・・・・表示にする */
+    -webkit-box-orient: vertical;
+    font-weight: 400;
+    font-size: 2em;
+    margin: auto;
+    padding: 5px;
+    color: #05BFDB;
+}
