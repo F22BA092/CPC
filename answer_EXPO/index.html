@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>謎の回答</title>
+    <style>
+        :root {
+            --mainColor: #fff;
+            --subColor: #6f7477;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .contentBackground {
+            background-color: var(--subColor);
+            /* 背景色を変更 */
+            width: 100vw;
+            /* 横幅を画面いっぱいに表示 */
+            height: 100vh;
+            /* 縦幅を画面いっぱいに表示 */
+        }
+
+        .bodyDiv {
+            overflow: scroll;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            /* absoluteからのtransformで、上下左右中央揃えに */
+            width: 100%;
+            height: auto;
+            max-height: 80%;
+            /* 縦幅を可変出来る様に */
+            display: flex;
+            /* 要素を重ねて表示できるよう */
+            flex-direction: column;
+            /* 要素を上から順番に並べる様に */
+            background: var(--mainColor);
+        }
+
+        .contentHeader {
+            border: none;
+            width: 100%;
+            background-color: var(--subColor);
+            display: flex;
+            padding: 15px 0;
+            /* 要素の内側に上下15pxの余白を設ける */
+        }
+
+        .contentHeaderText {
+            color: #fff;
+            margin: auto;
+            font-size: 1.5em;
+            /* フォントのサイズをemを使い、画面サイズごとに適切なサイズに */
+            font-family: serif;
+            /* フォントのスタイルをserifに */
+            font-weight: bold;
+            /* フォントの太さをboldに */
+            letter-spacing: .1em;
+            /* 文字と文字のスペースを設定 */
+            padding: 0 0.8em;
+        }
+        
+        .answerDiv {
+            margin: 20px 0;
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .answerText {
+            color: #000;
+            margin: 0 15px;
+            font-size: 1.3em;
+            font-family: serif; /* フォントのスタイルをserifに */
+            font-weight: bold; /* フォントの太さをboldに */
+            letter-spacing: .1em; /* 文字と文字のスペースを設定 */
+        }
+        .answerTextBox {
+            display: flex;
+            width: calc(100% - 25px); /* 画面横幅いっぱいから、margin幅と5p分を引いた値を要素の横幅とする */
+            height: 50px;
+            margin: 20px 10px 0 10px; /* 要素の外側の余白を上下20px、横を10pxとする */
+            font-size: 1.2em;
+        }
+
+        .answerInfo {
+            margin: 0 15px;
+            color: var(--subColor);
+            font-size: 1.2em;
+            font-family: serif; /* フォントのスタイルをserifに */
+            font-weight: bold; /* フォントの太さをboldに */
+            letter-spacing: .1em; /* 文字と文字のスペースを設定 */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="contentBackground">
+        <div class="bodyDiv">
+            <header class="contentHeader">
+                <p class="contentHeaderText">
+                    謎解き最終回答
+                </p>
+            </header>
+            <div class="answerDiv">
+                <p class="answerText">Q1.ジョン博士は自殺したのですか？それとも他殺ですか？</p>
+                <input class="answerTextBox" type="text" placeholder="答えを入力してください・・・">
+            </div>
+            <div class="answerDiv">
+                <p class="answerText">Q2.博士の死因は？</p>
+                <input class="answerTextBox" type="text" placeholder="答えを入力してください・・・">
+            </div>
+            <div class="answerDiv">
+                <p class="answerText">Q3.犯人の犯行動機は？</p>
+                <input class="answerTextBox" type="text" placeholder="答えを入力してください・・・">
+            </div>
+            <div class="answerDiv">
+                <p class="answerText">Q4.博士のやろうとしたことは？</p>
+                <input class="answerTextBox" type="text" placeholder="答えを入力してください・・・">
+            </div>
+            <div class="answerDiv">
+                <p class="answerText">Q5.この事件の犯人はだれ？</p>
+                <input class="answerTextBox" type="text" placeholder="答えを入力してください・・・">
+            </div>
+            <p class="answerInfo">入力が終わったら、会場の謎解き担当にこの画面を見せに行きましょう。</p>
+        </div>
+    </div>
+</body>
+<script>
+    // ウインドウ更新を阻止する関数.
+    window.addEventListener('beforeunload', function (event) {
+        if (true) {
+            event.preventDefault(); // ページの更新を阻止
+            event.returnValue = '';
+            const confirmationMessage = 'このページを離れようとしています。本当によろしいですか？';
+            (event || window.event).returnValue = confirmationMessage;
+            return confirmationMessage;
+        }
+    });
+</script>
+
+</html>
