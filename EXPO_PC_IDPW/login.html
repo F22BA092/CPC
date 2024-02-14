@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博士のPCのファイルのロックを開ける</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700">
+</head>
+
+<body>
+    <div class="contentModalBackground">
+        <div class="contentModal">
+            <P class="contentModalHeaderText">
+                一つのフォルダにロックが付いている
+            </P>
+            <p class="contentModalText">
+                IDとパスワード……。<br>
+                ヒントが無ければ、突破するのは難しそう。<br>
+                ファイル構成を見ればわかるかな…
+            </p>
+            <button class="contentModalButton" onclick="modalOut()">次へ</button>
+        </div>
+    </div>
+    <div class="contentBackground">
+        <div class="bodyDiv">
+            <header class="contentHeader">
+                <p class="contentHeaderText">
+                    IDとPWのヒントを得てフォルダ内を見る
+                </p>
+            </header>
+            <div id="login">
+                <form name='form-login'>
+                    <input type="text" id="userid" placeholder="userID">
+
+                    <input type="password" id="pass" placeholder="Password">
+
+                    <input type="button" value="Login" onclick="submitIdPassword()">
+                </form>
+            </div>
+            <a href="passwordCrack.html" class="passCrackBtn">
+                <p class="passCrackText">他のファイル構成を見る</p>
+            </a>
+        </div>
+    </div>
+</body>
+<script>
+    function modalOut() {
+        document.getElementsByClassName("contentModalBackground")[0].style.display = "none";
+    }
+
+    function submitIdPassword() {
+        const userId = document.getElementById("userid").value;
+        const password = document.getElementById("pass").value;
+        if (userId == "" || password == "") {
+            return;
+        } else if (userId == "aillim" && password == "J@HNF") {
+            alert("ログインに成功!")
+            // 別のHTMLページに遷移する
+            window.location.href = "diary.html";
+        } else {
+            return;
+        }
+    }
+
+</script>
+
+</html>
