@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博士の犯行声明</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+
+<body>
+
+    <div class="contentModalBackground">
+        <div class="contentModal">
+            <P class="contentModalHeaderText">
+                ジョン博士の犯行声明
+            </P>
+            <p class="contentModalText">
+                これは、何……？<br>
+                犯行声明？彼がこんな事を企んでいたなんて……。
+            </p>
+            <button class="contentModalButton" onclick="modalOut()">次へ</button>
+        </div>
+    </div>
+    <div class="contentBackground">
+        <div class="bodyDiv">
+            <header class="contentHeader">
+                <p class="contentHeaderText">
+                    全人類、機械に悉く隷属せよ。
+                </p>
+            </header>
+            <div class="letter">
+                <p class="letterText">これを見ているということは、始まったのだろう？私は世のために考え、行動をし、平和のためにAIをつくった。</p>
+                <p class="letterText"><br>君たちは私のAIを使って争い、殺しあうばかりだ。<span
+                        class="letterTextEmphasis">私はそんな君たちに対して、AIの支配下についてもらうことにした。</span></p>
+                <p class="letterText"><br>だが、それだけだとつまらないだろう。これから私と一つゲームをしようじゃないか。</p>
+                <p class="letterText"><br>ルールは単純だ。生きるか死ぬか…その二つだけだ。終わりなんてない殺し合いを私としようじゃないか。</p>
+            </div>
+
+            <a href="diary.html" class="eventReadEnd">
+                <p class="eventReadEndText">犯行声明を読み終える</p>
+            </a>
+        </div>
+</body>
+<script>
+    function modalOut() {
+        document.getElementsByClassName("contentModalBackground")[0].style.display = "none";
+    }
+
+</html >

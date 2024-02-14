@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博士のPCの電源を付ける</title>
+    <script src="leader-line.min.js"></script>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+
+<body>
+    <div class="contentBackground">
+        <div class="bodyDiv">
+            <header class="contentHeader">
+                <p class="contentHeaderText">
+                    電線を繋いでPCの電源を付ける
+                </p>
+            </header>
+            <div class="tableRow">
+                <div onclick="lineUntine(this.id)" style="border: 2px solid #ff0000;" class="columnTop elemActive"
+                    id="root1">
+                    <p class="elemTextStyle">ACアダプタ</p>
+                </div>
+            </div>
+            <div class="tableRow">
+                <div onclick="lineUntine(this.id)" style="border: 2px solid #ff0000;" class="columnLeft" id="root2">
+                    <p class="elemTextStyle">DC/DC充電</p>
+                </div>
+                <div onclick="lineUntine(this.id)" style="border: 2px solid #0000ff;" class="columnRight" id="root6">
+                    <p class="elemTextStyle">起動デバイス選択</p>
+                </div>
+            </div>
+            <div class="tableRow">
+                <div onclick="lineUntine(this.id)" class="columnLeft" id="root5">
+                    <p class="elemTextStyle">BIOS</p>
+                </div>
+                <div onclick="lineUntine(this.id)" style="border: 2px solid #5b2325" class="columnRight" id="root7">
+                    <p class="elemTextStyle">OS読み込み</p>
+                </div>
+            </div>
+            <div class="tableRow">
+                <div onclick="lineUntine(this.id)" style="border: 2px solid #fbc745" class="columnLeft" id="root8">
+                    <p class="elemTextStyle">画面読み込み</p>
+                </div>
+                <div onclick="lineUntine(this.id)" style="border: 2px solid #00ff00;" class="columnRight" id="root3">
+                    <p class="elemTextStyle">ドライブ</p>
+                </div>
+            </div>
+            <div class="tableRow">
+                <div onclick="lineUntine(this.id)" style="border: 2px solid #f27795" class="columnLeft" id="root9">
+                    <p class="elemTextStyle">PC起動</p>
+                </div>
+                <div onclick="lineUntine(this.id)" style="border: 2px solid #000;" class="columnRight" id="root4">
+                    <p class="elemTextStyle">メモリー</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+
+    glineStart = "root1";
+    glineEnd = "";
+
+    function lineUntine(clickId) {
+        if (glineStart == clickId) {
+            return;
+        }
+        glineEnd = clickId;
+
+        if (glineStart == "root1" && glineEnd == "root2") {
+            new LeaderLine(
+                document.getElementById('root1'),
+                document.getElementById('root2'), {
+                color: '#ff0000',
+                startPlug: 'square',
+                endPlug: 'square'
+            });
+            document.getElementById(glineStart).classList.remove("elemActive");
+            changeBorderColor("#00ff00");
+            glineStart = "root2";
+            glineEnd = "";
+            document.getElementById(glineStart).classList.add("elemActive");
+
+        } else if (glineStart == "root2" && glineEnd == "root3") {
+            new LeaderLine(
+                document.getElementById('root2'),
+                document.getElementById('root3'), {
+                color: '#00ff00',
+                startPlug: 'square',
+                endPlug: 'square'
+            });
+            document.getElementById(glineStart).classList.remove("elemActive");
+            changeBorderColor("#000000");
+            glineStart = "root3";
+            glineEnd = "";
+            document.getElementById(glineStart).classList.add("elemActive");
+
+        } else if (glineStart == "root3" && glineEnd == "root4") {
+            new LeaderLine(
+                document.getElementById('root3'),
+                document.getElementById('root4'), {
+                color: '#000000',
+                startPlug: 'square',
+                endPlug: 'square'
+            });
+            document.getElementById(glineStart).classList.remove("elemActive");
+            changeBorderColor("#0000ff");
+            glineStart = "root5";
+            glineEnd = "";
+            document.getElementById(glineStart).classList.add("elemActive");
+
+        } else if (glineStart == "root5" && glineEnd == "root6") {
+            new LeaderLine(
+                document.getElementById('root5'),
+                document.getElementById('root6'), {
+                color: '#0000ff',
+                startPlug: 'square',
+                endPlug: 'square'
+            });
+            document.getElementById(glineStart).classList.remove("elemActive");
+            changeBorderColor("#5b2325");
+            glineStart = "root6";
+            glineEnd = "";
+            document.getElementById(glineStart).classList.add("elemActive");
+
+        } else if (glineStart == "root6" && glineEnd == "root7") {
+            new LeaderLine(
+                document.getElementById('root6'),
+                document.getElementById('root7'), {
+                color: '#5b2325',
+                startPlug: 'square',
+                endPlug: 'square'
+            });
+            document.getElementById(glineStart).classList.remove("elemActive");
+            changeBorderColor("#fbc745");
+            glineStart = "root7";
+            glineEnd = "";
+            document.getElementById(glineStart).classList.add("elemActive");
+
+        } else if (glineStart == "root7" && glineEnd == "root8") {
+            new LeaderLine(
+                document.getElementById('root7'),
+                document.getElementById('root8'), {
+                color: '#fbc745',
+                startPlug: 'square',
+                endPlug: 'square'
+            });
+            document.getElementById(glineStart).classList.remove("elemActive");
+            changeBorderColor("#f27795");
+            glineStart = "root8";
+            glineEnd = "";
+            document.getElementById(glineStart).classList.add("elemActive");
+
+        } else if (glineStart == "root8" && glineEnd == "root9") {
+            new LeaderLine(
+                document.getElementById('root8'),
+                document.getElementById('root9'), {
+                color: '#f27795',
+                startPlug: 'square',
+                endPlug: 'square'
+            });
+            document.getElementById(glineStart).classList.remove("elemActive");
+            glineStart = "";
+            glineEnd = "";
+            alert("電源が付いた!")
+            // 別のHTMLページに遷移する
+            window.location.href = "login.html";
+
+        } else {
+            return
+        }
+
+
+    }
+
+    // 環境変数を変更する関数.
+    function changeBorderColor(color) {
+        document.documentElement.style.setProperty('--borderColor', color);
+    }
+
+</script>
+
+</html>
