@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2024EXPO謎解き</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .contentBackground {
+            background-color: #222831; /* 背景色を変更 */
+            width: 100vw; /* 横幅を画面いっぱいに表示 */
+            height: 100vh;  /* 縦幅を画面いっぱいに表示 */
+        }
+
+        .content {
+            position: absolute; 
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);  /* absoluteからのtransformで、上下左右中央揃えに */
+            width: 100%;
+            height: auto;  /* 縦幅を可変出来る様に */
+            display: flex;  /* 要素を重ねて表示できるよう */
+            flex-direction: column; /* 要素を上から順番に並べる様に */
+        }
+
+        .questionHeader {
+            width: 100%;
+            background-color: #222831;
+            display: flex;
+            padding: 15px 0px; /* 要素の内側に上下15pxの余白を設ける */
+        }
+
+        .questionHeaderText {
+            color: #fff;
+            margin: auto;
+            font-size: 1.5em; /* フォントのサイズをemを使い、画面サイズごとに適切なサイズに */
+            font-family: serif; /* フォントのスタイルをserifに */
+            font-weight: bold; /* フォントの太さをboldに */
+            letter-spacing: .1em; /* 文字と文字のスペースを設定 */
+        }
+
+        .answerTextbox {
+            display: flex;
+            width: calc(100% - 25px); /* 画面横幅いっぱいから、margin幅と5p分を引いた値を要素の横幅とする */
+            height: 50px;
+            margin: 20px 10px; /* 要素の外側の余白を上下20px、横を10pxとする */
+            font-size: 1.2em;
+        }
+
+        .answerBtn {
+            width: calc(100% - 20px);
+            margin: 0 10px;
+            background: #FFFFFF;
+            border: 4px solid #05BFDB;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); /* 要素の影を設定 */
+            border-radius: 3px; /* 要素の角を丸くする */
+            display: flex;
+        }
+
+        .answerBtnText {
+            font-family: Serif;
+            word-break: break-all;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3; /* 三行目までは表示され、それ以降は・・・・表示にする */
+            -webkit-box-orient: vertical;
+            font-weight: 400;
+            font-size: 2em;
+            margin: auto;
+            padding: 5px;
+            color: #05BFDB;
+        }
+
+
+        #failedAnswer {
+            display: none; /* 要素を見えなくする */
+        }
+
+        #failedAnswer.active {
+            font-family: Serif;
+            font-weight: 400;
+            font-size: 1.1em;
+            padding: 10px;
+            color: red;
+            display: flex;
+            animation-name: fadeInAnime; /* フェードインを0.5sの秒数で実装 */
+            animation-duration: 0.5s;
+            animation-fill-mode: forwards;
+            opacity: 0;
+        }
+
+        #failedAnswer.remove {
+            font-family: Serif;
+            font-weight: 400;
+            font-size: 1.1em;
+            padding: 10px;
+            color: red;
+            display: flex;
+            animation-name: fadeOutAnime; /* フェードアウトを0.5の秒数で実装 */
+            animation-duration: 0.5s;
+            animation-fill-mode: forwards;
+            opacity: 1;
+        }
+
+        @keyframes fadeInAnime {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeOutAnime {
+            from {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+            }
+        }
+
+        .correctContentBackground {
+            position: fixed;
+            z-index: 100;
+            width: 100vw;
+            height: 100vh;
+            display: none;
+            backdrop-filter: blur(2px); /* 背景を透かしてぼかす */
+            background: #464646de;
+        }
+
+        .correctContent {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            border-radius: 3px;
+            border: 7px solid #222831;
+            text-align: center; /* 子要素のテキストを中央揃えに */
+            padding: 0 0.5em;
+            width: 70%;
+        }
+
+        .correctContentHeaderText {
+            font-family: serif;
+            font-weight: 400;
+            font-size: 2.5em;
+            color: #F05454;
+            margin: auto;
+            padding: 10px;
+        }
+
+        .correctContentText {
+            font-family: serif;
+            font-weight: 400;
+            font-size: 1.5em;
+            color: #05BFDB;
+            margin: auto;
+            padding: 10px;
+        }
+
+        .correctContentHeaderTextInfo {
+            font-family: serif;
+            font-weight: 400;
+            font-size: .9em;
+            color: #000;
+            margin: auto;
+            padding: 10px;
+        }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.answerBtn').click(function () {
+
+                //テキストボックスに入力されている文字を抜き出す.
+                let hoge = $('.answerTextbox').val();
+
+                //hogeに入っている文字が正解だったら.
+                if (hoge == "ありがとう") {
+                    //答えがあっていたら、キーワードを持っているメニューを出現させる.
+                    document.getElementsByClassName("correctContentBackground")[0].style.display = "block";
+
+                    //hogeに入っている文字が不正解だったら.
+                } else {
+
+                    //エラーメッセージのremoveクラスがあったら取り外す.
+                    if ($('#failedAnswer').hasClass('remove')) {
+                        $('#failedAnswer').toggleClass('remove');
+                    }
+
+                    if (!$("#failedAnswer").hasClass("active")) {
+                        $('#failedAnswer').toggleClass('active'); //エラーメッセージをフェードイン表示させる為に、activeクラスを付ける.
+                    } else {
+                        //既にactiveクラスがついていたらスキップ.
+                        return;
+                    }
+
+                    //三秒後にアラートメッセージをフェードアウトさせる.
+                    window.setTimeout(() => {
+                        $('#failedAnswer').toggleClass('active');
+                        $('#failedAnswer').toggleClass('remove');
+                    }, 3000);
+
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="correctContentBackground">
+        <div class="correctContent">
+            <P class="correctContentHeaderText">
+                正解!
+            </P>
+            <p class="correctContentText">
+                <!--ここに問題で得られるキーワードを記述-->
+                キーワードは「ら」！
+            </p>
+            <p class="correctContentHeaderTextInfo">※メモが終わったらサイトは消していいよ！<br></p>
+        </div>
+    </div>
+    <div class="contentBackground">
+        <div class="content">
+            <header class="questionHeader">
+                <p class="questionHeaderText">
+                    <!--ここに問題を記述-->
+                    「119221044513」これの表す言葉を解読して答えよ！</p>
+            </header>
+            <input class="answerTextbox" type="text" placeholder="答えを入力してください">
+            <button class="answerBtn">
+                <p class="answerBtnText">回答する</p>
+            </button>
+            <p id="failedAnswer">答えが間違っています...</p>
+        </div>
+    </div>
+</body>
+
+</html>
