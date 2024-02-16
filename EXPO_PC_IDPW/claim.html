@@ -38,7 +38,7 @@
             </div>
 
             <a href="https://cidschool.github.io/cid-expo-quiz/quiz/1/" class="eventReadEnd">
-                <p class="eventReadEndText">犯行声明を読み終える</p>
+                <p class="eventReadEndText">調査を終了する</p>
             </a>
         </div>
 </body>
@@ -46,6 +46,16 @@
     function modalOut() {
         document.getElementsByClassName("contentModalBackground")[0].style.display = "none";
     }
+        // ウインドウ更新を阻止する関数.
+    window.addEventListener('beforeunload', function (event) {
+        if (true) {
+            event.preventDefault(); // ページの更新を阻止
+            event.returnValue = '';
+            const confirmationMessage = '壊れたPCについての調査を終了します。よろしいですか？';
+            (event || window.event).returnValue = confirmationMessage;
+            return confirmationMessage;
+        }
+    });
 </script>
 
 </html >
